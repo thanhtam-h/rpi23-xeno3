@@ -32,7 +32,7 @@ Replace 'ln -sf' by 'cp'  so that it will copy all neccessary xenomai files to l
 	  mkdir xeno3-patches
 Download all files in this directory and save them to *xeno3-patches* directory
 
-	  []https://github.com/thanhtam-h/rpi23-4.9.80-xeno3/tree/master/scripts
+	  https://github.com/thanhtam-h/rpi23-4.9.80-xeno3/tree/master/scripts
 
 	
 Patching
