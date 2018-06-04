@@ -24,8 +24,14 @@ Automatically deploy
 	 chmod +x deploy.sh
 	 ./deploy.sh
 	
+Post processing
+------------ 
+Linux header install in previous step is needed to fixed before you can use to build module natively on rpi in future:
+
+	 cd /usr/src/linux-headers-4.9.80-v7-xeno3+/
+	 sudo make -i modules_prepare
 	
-Test xenomai on rpi:
+Test xenomai on rpi
 ------------   
 In order to test whether your kernel is really patched with xenomai, run the latency test from xenomai tool:
 
