@@ -50,7 +50,7 @@ Patching
 Building kernel
 ------------
 	  
-    make -j4 O=build ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcmrpi_defconfig
+    make -j4 O=build ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- bcm2709_defconfig
     make O=build ARCH=arm CROSS_COMPILE=arm-linux-gnueabihf- -j4 menuconfig
 
 Select options as following:
