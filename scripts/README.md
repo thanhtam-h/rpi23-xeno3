@@ -151,8 +151,22 @@ Save it and run ldconfig command:
 
       sudo ldconfig
       
-      
-Test xenomai on rpi:
+CPU affinity
+------------  
+At least, there are 2 reasons that we should do CPU affinity for rpi23:
+
+- First, since rpi2,3 machines has 4 CPU cores, it can be better if we separate 2 CPU cores for normal Xenomai and 2 for normal Linux. This works may reduce realtime task latency. 
+- Second, it is found that current 4.9.80 xenomai kernel will be stopped after few hours running latency test (or any realtime task) on raspberri pi 3b+. Curerent work-around solution is CPU affinity.
+
+In order to do that CPU affinity for rpi23, edit */boot/cmdline.txt* file:
+
+	sudo nano /boot/cmdline.txt
+Add below texts to the end of single-line in */boot/cmdline.txt* file
+
+	 isolcpus=0,1 xenomai.supported_cpus=0x3
+Here we isolate 2 first COU cores from Linux (**isolcpus=0,1**) and use them for xenomai realtime tasks (**xenomai.supported_cpus=0x3**)
+
+Test xenomai on rpi
 ------------      
 In order to test whether your kernel is really patched with xenomai, run the latency test from xenomai tool:
 
