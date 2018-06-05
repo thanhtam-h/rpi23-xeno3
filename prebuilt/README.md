@@ -1,9 +1,24 @@
 # prebuilt kernel and xenomai for rpi23 include 3b+
 built 4.9.80 ipipe patched kernel + prebuilt xenomai user-space libraries and tool. Pull down and deploy
 
-Manually deploy
+Download prebuilt kernel
 ------------
-Download and transfer all files in this directory to rpi23. From rpi:
+Download and transfer all files in this directory to rpi23:
+
+     sudo apt-get install subversion
+     svn checkout https://github.com/thanhtam-h/rpi23-4.9.80-xeno3/trunk/prebuilt
+     cd prebuilt
+     
+Automatically deploy
+------------
+Run these commands and deploy automatically, your rasperry pi will be updated and rebooted 
+	
+	 chmod +x deploy.sh
+	 ./deploy.sh
+	 
+Manually deploy (optional)
+------------
+From prebuilt directory:
 
      sudo dpkg -i linux-image*
      sudo dpkg -i linux-headers*
@@ -11,19 +26,12 @@ Download and transfer all files in this directory to rpi23. From rpi:
      cd dts
      sudo cp -rf * /boot/
      sudo mv /boot/vmlinuz-4.9.80-v7-xeno3+ /boot/kernel7.img
-	 cd ..
+     cd ..
      sudo tar -xjvf rpi23-xeno3-deploy.tar.bz2 -C /
      sudo cp xenomai.conf /etc/ld.so.conf.d/
      sudo ldconfig
      sudo reboot
 	 
-Automatically deploy
-------------
-	Run these commands and deploy, your rasperry pi will be updated and rebooted 
-	
-	 chmod +x deploy.sh
-	 ./deploy.sh
-	
 Post processing
 ------------ 
 Linux header install in previous step is needed to fixed before you can use to build module natively on rpi in future:
