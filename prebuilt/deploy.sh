@@ -1,3 +1,4 @@
+sudo rm /boot/*4.9.80-v7-xeno3+
 sudo dpkg -i linux-image*
 sudo dpkg -i linux-headers*
 tar -xjvf linux-dts-4.9.*.tar.bz2
