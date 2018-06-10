@@ -35,7 +35,7 @@ From prebuilt directory:
 	 
 Post processing
 ------------ 
-Linux header install in previous step is needed to fixed before you can use to build module natively on rpi in future:
+We need to fix Linux header before we can use it to build module native on rpi in future:
 
 	 cd /usr/src/linux-headers-4.9.80-v7-xeno3+/
 	 sudo make -i modules_prepare
