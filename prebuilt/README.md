@@ -61,4 +61,4 @@ Test xenomai on rpi
 In order to test whether your kernel is really patched with xenomai, run the latency test from xenomai tool:
 
       sudo /usr/xenomai/bin/latency
-If latency tool get start and show some result, you are now have realtime kernel for your rpi
+If latency tool get start and show some result, your rpi is now having realtime kernel
