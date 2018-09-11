@@ -41,19 +41,15 @@ We need to fix Linux header before we can use it to build module native on rpi i
 	 sudo make -i modules_prepare
 
 CPU affinity
-------------  
-At least, there are 2 reasons that we should do CPU affinity for rpi23:
-
-- First, since rpi2,3 machines has 4 CPU cores, it can be better if we separate 2 CPU cores for realtime Xenomai and 2 for normal Linux. This works may reduce realtime task latency. 
-- Second, it is found that current 4.9.80 xenomai kernel will be stopped after few hours running latency test (or any realtime task) on raspberri pi 3. My current work-around solution is CPU affinity.
-
+------------ 
+Update: If we isolate all 4 cores of rpi23 for xenomai use, the EtherCAT sending/receiving worst time will be significantly reduced
 In order to do that CPU affinity for rpi23, edit */boot/cmdline.txt* file:
 
 	sudo nano /boot/cmdline.txt
 Add below texts to the end of single-line in */boot/cmdline.txt* file
 
-	 isolcpus=0,1 xenomai.supported_cpus=0x3
-Here we isolate 2 first CPU cores from Linux (**isolcpus=0,1**) and use them for Xenomai realtime tasks (**xenomai.supported_cpus=0x3**). CPU affinity will be affected after you reboot rpi machine
+	 isolcpus=0,1,2,3 xenomai.supported_cpus=0xF
+Here we isolate all 4 CPU cores from Linux (**isolcpus=0,1,2,3**) and use them for Xenomai realtime tasks (**xenomai.supported_cpus=0xF**). CPU affinity will be affected after you reboot rpi machine
 
 
 Test xenomai on rpi

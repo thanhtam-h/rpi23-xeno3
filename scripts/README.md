@@ -16,9 +16,9 @@ Preparation on host PC
 
 * Download xenomai-3: 
 
-      wget https://xenomai.org/downloads/xenomai/stable/xenomai-3.0.5.tar.bz2
-      tar -xjvf xenomai-3-3.0.5.tar.bz2
-      ln -s xenomai-3-3.0.5 xenomai
+      wget https://xenomai.org/downloads/xenomai/stable/xenomai-3.0.7.tar.bz2
+      tar -xjvf xenomai-3.0.7.tar.bz2
+      ln -s xenomai-3.0.7 xenomai
 MODIFY 'xenomai/scripts/prepare-kernel.sh' file
 Replace 'ln -sf' by 'cp'  so that it will copy all neccessary xenomai files to linux source
 
@@ -43,10 +43,7 @@ Patching
 
 	  	../xenomai/scripts/prepare-kernel.sh --linux=./  --arch=arm  --ipipe=../xeno3-patches/ipipe-core-4.9.51-arm-4-for-4.9.80.patch
       
-2. Replace *pinctrl-bcm2835.c* by the one from ipipe git:
 
-	  	cp ../xeno3-patches/pinctrl-bcm2835.c 	drivers/pinctrl/bcm/
-           
 Building kernel
 ------------
 	  
